@@ -14,7 +14,7 @@ Die Kreditkartennummer (16 Stellen!) ist durch eine Prüfziffer (15. Stelle, die
 1. Die Ziffern an den Stellen mit gerader Nummer (beginnend bei 0) werden verdoppelt und `deren Ziffernsumme` wird aufsummiert!
 2. Die Ziffern an den Stellen mit ungerader Nummer werden aufsummiert!
 3. Die beiden erhaltenen Zahlen werden addiert und die Differenz zur nächsten Zehnerzahl wird ermittelt, die gleich groß oder größer ist als die Summe der geraden bzw. ungeraden Stellen. Diese Differenz zur nächsten Zehnerzahl (0-9) ist dann die Prüfziffer (15. Stelle der Kreditkartennummer).
-4. Ist die Kreditkartennummer gültig, liefert die Prüfroutine true, ansonsten `false`.
+4. Ist die Kreditkartennummer gültig, liefert die Prüfroutine `true`, ansonsten `false`.
 
 ![Schema](./images/00_algo.png)
 
