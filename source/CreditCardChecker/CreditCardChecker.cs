@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CreditCardChecker
 {
@@ -15,8 +16,16 @@ namespace CreditCardChecker
                 return false;
             }
 
-            int oddSum = 0;
+            var evenSum = creditCardNumber.Where((even, i) => i % 2 == 0)
+                                        .Select(ch => CalculateDigitSum(ConvertToInt(ch)*2))
+                                        .Sum();
+
+            var oddSum = creditCardNumber.Where((odd, i) => i % 2 != 0 && i != 15)
+                                        .Select(ch => ConvertToInt(ch))
+                                        .Sum();
+            /*
             int evenSum = 0;
+            int oddSum = 0;
 
             for (int i = 0; i < creditCardNumber.Length; i += 2)
             {
@@ -27,7 +36,7 @@ namespace CreditCardChecker
             {
                 oddSum += ConvertToInt(creditCardNumber[i]);
             }
-
+            */
 
             return CalculateCheckDigit(oddSum, evenSum) == ConvertToInt(creditCardNumber[15]);
         }
@@ -41,7 +50,9 @@ namespace CreditCardChecker
             int result = oddSum + evenSum;
 
             result %= 10;
-            result = 10 - result;
+
+            if (result > 0)
+                result = 10 - result;
 
             return result;
         }
